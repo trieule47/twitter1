@@ -4,7 +4,7 @@ import 'package:flutter_app/repositories/api_client.dart';
 
 part 'follow_repositories.chopper.dart';
 
-@ChopperApi(baseUrl: ':id/following')
+@ChopperApi(baseUrl: '')
 abstract class FollowRepository extends ApiClient {
   static FollowRepository manager;
 
@@ -21,6 +21,9 @@ abstract class FollowRepository extends ApiClient {
     return manager;
   }
 
-  @Get(path: '/{id}')
+  @Get(path: ':id/following/')
   Future<Response<ApiResponse>> getListFollow(@Path('id') int id);
+
+  @Get(path: 'by/username/:username/')
+  Future<Response<ApiResponse>> getUser(@Path('username') String username);
 }

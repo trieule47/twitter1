@@ -21,7 +21,7 @@ class LoginView extends BaseView {
   }
 
   @override
-  Widget renderAppBar({AppBarModel appBarModel}) {
+  Widget renderAppBar({BuildContext context, AppBarModel appBarModel}) {
     return super.renderAppBar(
       appBarModel: new AppBarModel(title: "Login", isBack: true),
     );

@@ -18,4 +18,6 @@ class FollowerModel {
 
   factory FollowerModel.fromJson(Map<String, dynamic> json) =>
     _$FollowerModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FollowerModelToJson(this);
 }

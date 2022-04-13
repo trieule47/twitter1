@@ -8,6 +8,12 @@ class StorageUtil {
   static final String deviceToken = 'deviceToken'; // Device token
   static final String firebaseToken = 'firebaseToken'; // Firebase token
 
+  static final String suggestions = 'suggestions'; // suggestions when search
+  static final String listUsers = 'listUsers'; // listUsers have watched
+  static final String listFollow = 'listFollow'; // listFollow of user
+  static final String dataFollow = 'dataFollow'; // dataFollow of user
+  static final String dataUnFollow = 'dataUnFollow'; // dataUnFollow of user
+
   /// Store item
   static Future<void> storeItem(String key, dynamic value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

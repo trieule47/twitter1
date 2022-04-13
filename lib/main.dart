@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Kinder World',
+      title: 'Twitter by T',
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 200),

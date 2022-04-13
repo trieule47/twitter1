@@ -9,34 +9,48 @@ import 'package:fluttertoast/fluttertoast.dart';
 class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  //  final args = ModalRoute.of(context).settings.arguments ;
     return Scaffold(
       backgroundColor: Colors.background,
-      appBar: this.renderAppBar(),
+      appBar: this.renderAppBar(context: context),
       body: this.renderBody(),
     );
   }
 
   /// Render app bar
-  Widget renderAppBar({AppBarModel appBarModel}) {
-    return AppBar(
-      leading: ButtonWidget(
-        transparent: true,
-        icon: Icon(Icons.arrow_back_outlined),
-        onTap: () {},
-      ),
-      centerTitle: true,
-      elevation: Constants.elevation,
-      shadowColor: Colors.shadow,
-      title: Text(
-        appBarModel?.title ?? "Welcome",
-        style: CommonStyle.textLargeBold(),
-      ),
-      titleSpacing: 16,
-      actions: [],
-      backgroundColor: Colors.white,
-      brightness: Brightness.dark,
-      automaticallyImplyLeading: true,
-    );
+  Widget renderAppBar({BuildContext context, AppBarModel appBarModel}) {
+   if(appBarModel != null && appBarModel.isBackground){
+     return AppBar(
+       leading: ButtonWidget(
+         transparent: true,
+         icon: Icon(Icons.arrow_back_outlined),
+         onTap: () {
+           print(context);
+         },
+       ),
+       centerTitle: true,
+       elevation: Constants.elevation,
+       shadowColor: Colors.shadow,
+       title: Text(
+         appBarModel?.title ?? "Welcome",
+         style: CommonStyle.textLargeBold(),
+       ),
+       titleSpacing: 16,
+       actions: [],
+       backgroundColor: Colors.white,
+       brightness: Brightness.dark,
+       automaticallyImplyLeading: true,
+     );
+   }else{
+     return AppBar(
+       // elevation: Constants.elevation,
+       // shadowColor: Colors.shadow,
+       title: appBarModel.titleWidget ?? Text("Welcome"),
+       titleSpacing: 16,
+       actions: appBarModel.actions ?? []
+     );
+   }
+
   }
 
   /// Render body
