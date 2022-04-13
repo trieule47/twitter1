@@ -22,11 +22,10 @@ class FollowView extends BaseView {
   @override
 
   ///after 30s auto request follow list to check star
-  void set(id) {
-    _timer = Timer.periodic(Duration(seconds: 30), (Timer timer) async {
-      debugPrint("het 10 s");
-      //_followController.NewFollowList(id);
-      //ShowListNewFollow(_followController.newFollows.value.data);
+  void SetInterval() {
+    _timer = Timer.periodic(Duration(seconds: 180), (Timer timer) async {
+      debugPrint("start fetch");
+      _followController.newAllListFollow();
     });
   }
 
@@ -49,9 +48,6 @@ class FollowView extends BaseView {
             icon: Icon(Icons.add),
             onPressed: () async {
               print(context);
-              // _followController.GetFollowList(1445088239556067329);
-              //_followController.GetFollowList(1445088239556067329);
-              // _followController.getUserByUsername('nshzvs');
               final String result = await showSearch(
                   context: context,
                   delegate: Search(Suggestions: _followController.Suggestions));
@@ -60,6 +56,7 @@ class FollowView extends BaseView {
                 _followController.setSuggestion(username);
                 _followController.getUserByUsername(username);
                 print('username : $username');
+                SetInterval();
               }
             },
           )

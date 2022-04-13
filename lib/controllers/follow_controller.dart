@@ -94,7 +94,7 @@ class FollowController extends BaseController {
     });
   }
 
-  //general list
+  ///general list
   void initialList(index) {
     for (var i in this.allListFollows[index][1]) {
       // print('a: ${i.name}, : data ${dataFollow.value.data.toString()}');
@@ -105,7 +105,7 @@ class FollowController extends BaseController {
     }
   }
 
-  //list new follow of user
+  ///list new follow of user
   Future<void> NewFollows(id, index) async {
     var ID = int.parse(id);
     this.showLoading();
@@ -159,8 +159,10 @@ class FollowController extends BaseController {
     });
   }
 
-  //new all follow of all user
-  void newAllListFollow(dynamic list) {
+  ///new all follow of all user
+  void newAllListFollow() {
+    List<FollowerModel> list;
+    list = this.ListUsers;
     if (list != []) {
       var l = list.length;
       for (var i = 0; i < l; i++) {
